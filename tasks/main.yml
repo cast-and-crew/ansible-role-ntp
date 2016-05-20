@@ -4,11 +4,13 @@
   tags: [ 'configuration', 'package', 'service', 'ntp' ]
 
 - name: Install the required packages in Redhat derivatives
+  become: yes
   yum: name=ntp state={{ ntp_pkg_state }}
   when: ansible_os_family == 'RedHat'
   tags: [ 'package', 'ntp' ]
 
 - name: Install the required packages in Debian derivatives
+  become: yes
   apt: name=ntp state={{ ntp_pkg_state }}
   when: ansible_os_family == 'Debian'
   tags: [ 'package', 'ntp' ]
